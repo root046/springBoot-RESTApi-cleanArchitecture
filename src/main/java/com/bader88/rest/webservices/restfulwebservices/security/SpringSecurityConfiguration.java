@@ -2,10 +2,10 @@ package com.bader88.rest.webservices.restfulwebservices.security;
 
 
 import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -26,7 +26,9 @@ public class SpringSecurityConfiguration {
         http.csrf(csrf -> csrf.disable()); // Starting from SB 3.1.x Using Lambda DSL
         // OR
         // http.csrf(AbstractHttpConfigurer::disable); // Starting from SB 3.1.x Using Method Reference
-
+//        -----------------------
+// Add this line to enable CORS configuration
+        http.cors(withDefaults());
 		
 		return http.build();
 	}
